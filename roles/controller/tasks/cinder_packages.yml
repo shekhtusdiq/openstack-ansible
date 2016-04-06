@@ -1,0 +1,13 @@
+---
+  - name: Install Packages
+    apt: name={{ item }} state=present force=yes
+    with_items:
+    - cinder-api
+    - cinder-scheduler
+    - cinder-volume
+    - lvm2
+    - open-iscsi-utils
+    - open-iscsi
+    - iscsitarget
+    - sysfsutils
+

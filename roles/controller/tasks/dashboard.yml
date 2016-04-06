@@ -1,0 +1,3 @@
+---
+ - name: Install Packages
+   apt: name=openstack-dashboard state=installed force=yes 

@@ -1,0 +1,23 @@
+---
+  - name: Install Packages
+    apt: name={{ item }} state=installed force=yes
+    with_items:
+    - nova-api
+    - nova-cert
+    - nova-conductor
+    - nova-consoleauth
+    - nova-novncproxy
+    - nova-scheduler
+    - nova-compute 
+    - nova-console
+    - python-novaclient
+    
+  - name: Copy Nova.conf
+    template: src=/root/ansible/roles/controller/templates/no.j2 dest=/etc/nova/nova.conf owner=nova group=nova mode="u=rw,g=r,o=r"    
+
+
+#  - name: Nova DB Sync
+#    command: nova-manage db sync
+
+    notify:
+    - Nova restart all

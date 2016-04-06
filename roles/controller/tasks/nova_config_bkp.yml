@@ -1,0 +1,40 @@
+---
+   - name: Create the user nova 
+     keystone_user: tenant=admin user=nova password=nova_pass token=c74441d71bd640660939 state=present
+
+   - name: Add nova user to admin role
+     keystone_user: user=nova tenant=service role=admin token=c74441d71bd640660939  state=present
+
+#  - name: Create Service
+#    command:  keystone service-create --name nova --type compute --description "OpenStack Compute" 
+
+#  - name: Create Endpoint
+#    command:  keystone endpoint-create --service-id "$(keystone service-list | awk '/ compute / {print $2}')" --publicurl http://{{ ansible_eth0['ipv4']['address'] }}:8774/v2/%\(tenant_id\)s --region RegionOne
+
+   - name: Create Endpoint
+   - keystone_service: name=nova type=compute description="OpenStack Compute" public_url=http://{{ ansible_eth0['ipv4']['address'] }}:8774/v2%(tenant_id)s token=c74441d71bd640660939
+
+#     command: keystone endpoint-create --service=nova --publicurl=http://10.0.0.44:8774/v2/%\(tenant_id\)s --internalurl=http://10.0.0.44:8774/v2/%\(tenant_id\)s --adminurl=http://10.0.0.44:8774/v2/%\(tenant_id\)s
+#     keystone_service: name=nova type=compute description="OpenStack Compute" token=c74441d71bd640660939 public_url=http://localhost:8774/v2.0/%\(tenant_id\)
+
+#   - name: Nova DB Sync
+#     command: nova-manage db sync
+
+#   - name: Copy Nova.conf
+#     template: src=/etc/ansible/roles/controller/templates/no.j2 dest=/etc/nova/nova.conf owner=nova group=nova mode="u=rw,g=r,o=r"
+   
+#   - name: Copy nova-compute.conf
+#     template: src=/etc/ansible/roles/controller/templates/nc.j2 dest=/etc/nova/nova-compute.conf owner=nova group=nova mode="u=rw,g=r,o=r"
+
+   
+     notify:
+     - Nova restart all
+
+
+
+# name=glance type=image description="Glance Image Service" public_url=http://{{ ansible_eth0['ipv4']['address'] }}:9292/v2.0 token=c74441d71bd640660939
+
+# name=glance type=image description="Glance Image Service" public_url=http://{{ ansible_eth0['ipv4']['address'] }}:9292/v2.0 token=c74441d71bd640660939
+
+
+#keystone_service: token=c74441d71bd640660939 name=nova type=compute desecription="OpenStack Compute" public_url="http://{{ ansible_eth0['ipv4']['address'] }}:8774/v2252945cfa3fc90e8d13e52ff

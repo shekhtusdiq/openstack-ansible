@@ -1,0 +1,19 @@
+---
+  - name: Install Packages
+    apt: name={{ item }} state=installed force=yes
+    with_items:
+    - python-glanceclient
+    - glance
+
+  - name: Copy glance.conf
+    template: src=/root/ansible/roles/controller/templates/gl.j2 dest=/etc/glance/glance-api.conf owner=glance group=glance mode="u=rw,g=r,o=r"
+   
+  - name: Copy glance-registry.conf
+    template: src=/root/ansible/roles/controller/templates/glare.j2 dest=/etc/glance/glance-registry.conf owner=glance group=glance mode="u=rw,g=r,o=r"
+
+
+  - name: Service glance restart
+    service: name={{ item }} state=restarted
+    with_items:
+     - glance-api
+     - glance-registry    

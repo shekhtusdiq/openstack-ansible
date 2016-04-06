@@ -1,0 +1,230 @@
+Using /etc/ansible/ansible.cfg as config file
+Loaded callback default of type stdout, v2.0
+7 plays in playbook.yml
+
+PLAY ***************************************************************************
+
+TASK [setup] *******************************************************************
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147011.11-79556461200257 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147011.11-79556461200257 `"'
+127.0.0.1 PUT /tmp/tmp8BBf3m TO /root/.ansible/tmp/ansible-tmp-1458147011.11-79556461200257/setup
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147011.11-79556461200257/setup; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147011.11-79556461200257/" > /dev/null 2>&1'
+ok: [localhost]
+
+PLAY ***************************************************************************
+
+TASK [setup] *******************************************************************
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147011.54-6389231367057 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147011.54-6389231367057 `"'
+127.0.0.1 PUT /tmp/tmpODkUqI TO /root/.ansible/tmp/ansible-tmp-1458147011.54-6389231367057/setup
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147011.54-6389231367057/setup; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147011.54-6389231367057/" > /dev/null 2>&1'
+ok: [localhost]
+
+TASK [Upgrade] *****************************************************************
+task path: /etc/ansible/upgrade.yml:6
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147011.95-165923729677361 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147011.95-165923729677361 `"'
+127.0.0.1 PUT /tmp/tmpaUBJmV TO /root/.ansible/tmp/ansible-tmp-1458147011.95-165923729677361/apt
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147011.95-165923729677361/apt; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147011.95-165923729677361/" > /dev/null 2>&1'
+ok: [localhost] => {"cache_update_time": 1458144923, "cache_updated": false, "changed": false, "invocation": {"module_args": {"cache_valid_time": 3600, "deb": null, "default_release": null, "dpkg_options": "force-confdef,force-confold", "force": false, "install_recommends": null, "package": null, "purge": false, "state": "present", "update_cache": true, "upgrade": null}, "module_name": "apt"}}
+
+TASK [Check file exist or not.] ************************************************
+task path: /etc/ansible/upgrade.yml:10
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147012.69-86258275658774 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147012.69-86258275658774 `"'
+127.0.0.1 PUT /tmp/tmpWKLKVa TO /root/.ansible/tmp/ansible-tmp-1458147012.69-86258275658774/command
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147012.69-86258275658774/command; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147012.69-86258275658774/" > /dev/null 2>&1'
+changed: [localhost] => {"changed": true, "cmd": "test -f /etc/apt/sources.list.d/cloudarchive-juno.list", "delta": "0:00:00.001633", "end": "2016-03-16 22:20:12.746171", "invocation": {"module_args": {"_raw_params": "test -f /etc/apt/sources.list.d/cloudarchive-juno.list", "_uses_shell": true, "chdir": null, "creates": null, "executable": null, "removes": null, "warn": true}, "module_name": "command"}, "rc": 0, "start": "2016-03-16 22:20:12.744538", "stderr": "", "stdout": "", "stdout_lines": [], "warnings": []}
+
+TASK [Create a file] ***********************************************************
+task path: /etc/ansible/upgrade.yml:15
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional check failed", "skipped": true}
+
+TASK [Append a line] ***********************************************************
+task path: /etc/ansible/upgrade.yml:19
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147012.81-21248131348082 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147012.81-21248131348082 `"'
+127.0.0.1 PUT /tmp/tmpUn1N0q TO /root/.ansible/tmp/ansible-tmp-1458147012.81-21248131348082/lineinfile
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147012.81-21248131348082/lineinfile; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147012.81-21248131348082/" > /dev/null 2>&1'
+ok: [localhost] => {"backup": "", "changed": false, "invocation": {"module_args": {"backrefs": false, "backup": false, "content": null, "create": false, "delimiter": null, "dest": "/etc/apt/sources.list.d/cloudarchive-juno.list", "directory_mode": null, "follow": false, "force": null, "group": null, "insertafter": null, "insertbefore": null, "line": "deb http://ubuntu-cloud.archive.canonical.com/ubuntu trusty-updates/juno main", "mode": null, "owner": null, "regexp": null, "remote_src": null, "selevel": null, "serole": null, "setype": null, "seuser": null, "src": null, "state": "present", "validate": null}, "module_name": "lineinfile"}, "msg": ""}
+
+PLAY ***************************************************************************
+
+TASK [setup] *******************************************************************
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147012.9-273715177769331 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147012.9-273715177769331 `"'
+127.0.0.1 PUT /tmp/tmphZNJaA TO /root/.ansible/tmp/ansible-tmp-1458147012.9-273715177769331/setup
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147012.9-273715177769331/setup; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147012.9-273715177769331/" > /dev/null 2>&1'
+ok: [localhost]
+
+TASK [Install Packages] ********************************************************
+task path: /etc/ansible/mysql.yml:6
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147013.37-13884823609332 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147013.37-13884823609332 `"'
+127.0.0.1 PUT /tmp/tmpMpRBeO TO /root/.ansible/tmp/ansible-tmp-1458147013.37-13884823609332/apt
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147013.37-13884823609332/apt; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147013.37-13884823609332/" > /dev/null 2>&1'
+ok: [localhost] => (item=[u'python-mysqldb', u'mariadb-server', u'rabbitmq-server']) => {"cache_update_time": 0, "cache_updated": false, "changed": false, "invocation": {"module_args": {"cache_valid_time": null, "deb": null, "default_release": null, "dpkg_options": "force-confdef,force-confold", "force": true, "install_recommends": null, "name": ["python-mysqldb", "mariadb-server", "rabbitmq-server"], "package": ["python-mysqldb", "mariadb-server", "rabbitmq-server"], "purge": false, "state": "present", "update_cache": false, "upgrade": null}, "module_name": "apt"}, "item": ["python-mysqldb", "mariadb-server", "rabbitmq-server"]}
+
+PLAY ***************************************************************************
+
+TASK [setup] *******************************************************************
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147014.32-189226371413365 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147014.32-189226371413365 `"'
+127.0.0.1 PUT /tmp/tmpbjX3JA TO /root/.ansible/tmp/ansible-tmp-1458147014.32-189226371413365/setup
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147014.32-189226371413365/setup; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147014.32-189226371413365/" > /dev/null 2>&1'
+ok: [localhost]
+
+TASK [Create DB Keystone] ******************************************************
+task path: /etc/ansible/createdb.yml:6
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147014.75-134536581495506 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147014.75-134536581495506 `"'
+127.0.0.1 PUT /tmp/tmpUaqjfS TO /root/.ansible/tmp/ansible-tmp-1458147014.75-134536581495506/mysql_db
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147014.75-134536581495506/mysql_db; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147014.75-134536581495506/" > /dev/null 2>&1'
+ok: [localhost] => {"changed": false, "db": "keystone", "invocation": {"module_args": {"collation": "", "config_file": "~/.my.cnf", "encoding": "", "login_host": "localhost", "login_password": null, "login_port": 3306, "login_unix_socket": null, "login_user": null, "name": "keystone", "ssl_ca": null, "ssl_cert": null, "ssl_key": null, "state": "present", "target": null}, "module_name": "mysql_db"}}
+
+TASK [Create DB Glance] ********************************************************
+task path: /etc/ansible/createdb.yml:9
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147014.87-34925219437358 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147014.87-34925219437358 `"'
+127.0.0.1 PUT /tmp/tmp2cD94R TO /root/.ansible/tmp/ansible-tmp-1458147014.87-34925219437358/mysql_db
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147014.87-34925219437358/mysql_db; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147014.87-34925219437358/" > /dev/null 2>&1'
+ok: [localhost] => {"changed": false, "db": "glance", "invocation": {"module_args": {"collation": "", "config_file": "~/.my.cnf", "encoding": "", "login_host": "localhost", "login_password": null, "login_port": 3306, "login_unix_socket": null, "login_user": null, "name": "glance", "ssl_ca": null, "ssl_cert": null, "ssl_key": null, "state": "present", "target": null}, "module_name": "mysql_db"}}
+
+TASK [Create DB Nova] **********************************************************
+task path: /etc/ansible/createdb.yml:12
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147014.96-215201091804067 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147014.96-215201091804067 `"'
+127.0.0.1 PUT /tmp/tmpWWnFGf TO /root/.ansible/tmp/ansible-tmp-1458147014.96-215201091804067/mysql_db
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147014.96-215201091804067/mysql_db; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147014.96-215201091804067/" > /dev/null 2>&1'
+ok: [localhost] => {"changed": false, "db": "nova", "invocation": {"module_args": {"collation": "", "config_file": "~/.my.cnf", "encoding": "", "login_host": "localhost", "login_password": null, "login_port": 3306, "login_unix_socket": null, "login_user": null, "name": "nova", "ssl_ca": null, "ssl_cert": null, "ssl_key": null, "state": "present", "target": null}, "module_name": "mysql_db"}}
+
+TASK [Create DB Neutron] *******************************************************
+task path: /etc/ansible/createdb.yml:15
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147015.04-2276664851375 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147015.04-2276664851375 `"'
+127.0.0.1 PUT /tmp/tmp43_F5i TO /root/.ansible/tmp/ansible-tmp-1458147015.04-2276664851375/mysql_db
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147015.04-2276664851375/mysql_db; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147015.04-2276664851375/" > /dev/null 2>&1'
+ok: [localhost] => {"changed": false, "db": "neutron", "invocation": {"module_args": {"collation": "", "config_file": "~/.my.cnf", "encoding": "", "login_host": "localhost", "login_password": null, "login_port": 3306, "login_unix_socket": null, "login_user": null, "name": "neutron", "ssl_ca": null, "ssl_cert": null, "ssl_key": null, "state": "present", "target": null}, "module_name": "mysql_db"}}
+
+TASK [Create DB Cinder] ********************************************************
+task path: /etc/ansible/createdb.yml:18
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147015.13-115738685891906 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147015.13-115738685891906 `"'
+127.0.0.1 PUT /tmp/tmpWdYdwR TO /root/.ansible/tmp/ansible-tmp-1458147015.13-115738685891906/mysql_db
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147015.13-115738685891906/mysql_db; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147015.13-115738685891906/" > /dev/null 2>&1'
+ok: [localhost] => {"changed": false, "db": "cinder", "invocation": {"module_args": {"collation": "", "config_file": "~/.my.cnf", "encoding": "", "login_host": "localhost", "login_password": null, "login_port": 3306, "login_unix_socket": null, "login_user": null, "name": "cinder", "ssl_ca": null, "ssl_cert": null, "ssl_key": null, "state": "present", "target": null}, "module_name": "mysql_db"}}
+
+PLAY ***************************************************************************
+
+TASK [setup] *******************************************************************
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147015.23-164016634669534 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147015.23-164016634669534 `"'
+127.0.0.1 PUT /tmp/tmpqQ1ebr TO /root/.ansible/tmp/ansible-tmp-1458147015.23-164016634669534/setup
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147015.23-164016634669534/setup; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147015.23-164016634669534/" > /dev/null 2>&1'
+ok: [localhost]
+
+TASK [Assigne priveledge to User Keystone] *************************************
+task path: /etc/ansible/mysql_grant.yml:6
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147015.65-158739530741432 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147015.65-158739530741432 `"'
+127.0.0.1 PUT /tmp/tmp1LdWbR TO /root/.ansible/tmp/ansible-tmp-1458147015.65-158739530741432/command
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147015.65-158739530741432/command; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147015.65-158739530741432/" > /dev/null 2>&1'
+changed: [localhost] => {"changed": true, "cmd": ["mysql", "-e", "GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'%' IDENTIFIED BY 'keystone_dbpass';"], "delta": "0:00:00.243075", "end": "2016-03-16 22:20:15.942257", "invocation": {"module_args": {"_raw_params": "mysql -e \"GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'%' IDENTIFIED BY 'keystone_dbpass';\"", "_uses_shell": false, "chdir": null, "creates": null, "executable": null, "removes": null, "warn": true}, "module_name": "command"}, "rc": 0, "start": "2016-03-16 22:20:15.699182", "stderr": "", "stdout": "", "stdout_lines": [], "warnings": []}
+
+TASK [Assigne priveledge to User glance] ***************************************
+task path: /etc/ansible/mysql_grant.yml:9
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147015.97-162149210106264 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147015.97-162149210106264 `"'
+127.0.0.1 PUT /tmp/tmpAse0p6 TO /root/.ansible/tmp/ansible-tmp-1458147015.97-162149210106264/command
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147015.97-162149210106264/command; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147015.97-162149210106264/" > /dev/null 2>&1'
+changed: [localhost] => {"changed": true, "cmd": ["mysql", "-e", "GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'%' IDENTIFIED BY 'glance_dbpass';"], "delta": "0:00:00.005386", "end": "2016-03-16 22:20:16.024478", "invocation": {"module_args": {"_raw_params": "mysql -e \"GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'%' IDENTIFIED BY 'glance_dbpass';\"", "_uses_shell": false, "chdir": null, "creates": null, "executable": null, "removes": null, "warn": true}, "module_name": "command"}, "rc": 0, "start": "2016-03-16 22:20:16.019092", "stderr": "", "stdout": "", "stdout_lines": [], "warnings": []}
+
+TASK [Assigne priveledge to User Nova] *****************************************
+task path: /etc/ansible/mysql_grant.yml:12
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147016.05-216368127430278 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147016.05-216368127430278 `"'
+127.0.0.1 PUT /tmp/tmpI6euqG TO /root/.ansible/tmp/ansible-tmp-1458147016.05-216368127430278/command
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147016.05-216368127430278/command; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147016.05-216368127430278/" > /dev/null 2>&1'
+changed: [localhost] => {"changed": true, "cmd": ["mysql", "-e", "GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'%' IDENTIFIED BY 'nova_dbpass';"], "delta": "0:00:00.005164", "end": "2016-03-16 22:20:16.107734", "invocation": {"module_args": {"_raw_params": "mysql -e \"GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'%' IDENTIFIED BY 'nova_dbpass';\"", "_uses_shell": false, "chdir": null, "creates": null, "executable": null, "removes": null, "warn": true}, "module_name": "command"}, "rc": 0, "start": "2016-03-16 22:20:16.102570", "stderr": "", "stdout": "", "stdout_lines": [], "warnings": []}
+
+TASK [Assigne priveledge to User Neutron] **************************************
+task path: /etc/ansible/mysql_grant.yml:15
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147016.14-141915301038404 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147016.14-141915301038404 `"'
+127.0.0.1 PUT /tmp/tmpH8VMbB TO /root/.ansible/tmp/ansible-tmp-1458147016.14-141915301038404/command
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147016.14-141915301038404/command; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147016.14-141915301038404/" > /dev/null 2>&1'
+changed: [localhost] => {"changed": true, "cmd": ["mysql", "-e", "GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'%' IDENTIFIED BY 'neutron_dbpass';"], "delta": "0:00:00.005176", "end": "2016-03-16 22:20:16.189757", "invocation": {"module_args": {"_raw_params": "mysql -e \"GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'%' IDENTIFIED BY 'neutron_dbpass';\"", "_uses_shell": false, "chdir": null, "creates": null, "executable": null, "removes": null, "warn": true}, "module_name": "command"}, "rc": 0, "start": "2016-03-16 22:20:16.184581", "stderr": "", "stdout": "", "stdout_lines": [], "warnings": []}
+
+TASK [Assigne priveledge to User Cinder] ***************************************
+task path: /etc/ansible/mysql_grant.yml:18
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147016.22-218435775374934 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147016.22-218435775374934 `"'
+127.0.0.1 PUT /tmp/tmpOz0W3y TO /root/.ansible/tmp/ansible-tmp-1458147016.22-218435775374934/command
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147016.22-218435775374934/command; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147016.22-218435775374934/" > /dev/null 2>&1'
+changed: [localhost] => {"changed": true, "cmd": ["mysql", "-e", "GRANT ALL PRIVILEGES ON cinder.* TO 'cinder'@'%' IDENTIFIED BY 'cinder_dbpass';"], "delta": "0:00:00.004755", "end": "2016-03-16 22:20:16.270067", "invocation": {"module_args": {"_raw_params": "mysql -e \"GRANT ALL PRIVILEGES ON cinder.* TO 'cinder'@'%' IDENTIFIED BY 'cinder_dbpass';\"", "_uses_shell": false, "chdir": null, "creates": null, "executable": null, "removes": null, "warn": true}, "module_name": "command"}, "rc": 0, "start": "2016-03-16 22:20:16.265312", "stderr": "", "stdout": "", "stdout_lines": [], "warnings": []}
+
+PLAY ***************************************************************************
+
+TASK [setup] *******************************************************************
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147016.31-152502719110151 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147016.31-152502719110151 `"'
+127.0.0.1 PUT /tmp/tmpJrJdIG TO /root/.ansible/tmp/ansible-tmp-1458147016.31-152502719110151/setup
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147016.31-152502719110151/setup; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147016.31-152502719110151/" > /dev/null 2>&1'
+ok: [localhost]
+
+TASK [Install Packages] ********************************************************
+task path: /etc/ansible/keystone_packages.yml:6
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147016.76-222879287944084 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147016.76-222879287944084 `"'
+127.0.0.1 PUT /tmp/tmpLeY2RP TO /root/.ansible/tmp/ansible-tmp-1458147016.76-222879287944084/apt
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147016.76-222879287944084/apt; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147016.76-222879287944084/" > /dev/null 2>&1'
+ok: [localhost] => (item=[u'keystone', u'python-keystoneclient']) => {"cache_update_time": 0, "cache_updated": false, "changed": false, "invocation": {"module_args": {"cache_valid_time": null, "deb": null, "default_release": null, "dpkg_options": "force-confdef,force-confold", "force": true, "install_recommends": null, "name": ["keystone", "python-keystoneclient"], "package": ["keystone", "python-keystoneclient"], "purge": false, "state": "present", "update_cache": false, "upgrade": null}, "module_name": "apt"}, "item": ["keystone", "python-keystoneclient"]}
+
+PLAY ***************************************************************************
+
+TASK [setup] *******************************************************************
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147017.47-148006934038242 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147017.47-148006934038242 `"'
+127.0.0.1 PUT /tmp/tmpBiXJAS TO /root/.ansible/tmp/ansible-tmp-1458147017.47-148006934038242/setup
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147017.47-148006934038242/setup; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147017.47-148006934038242/" > /dev/null 2>&1'
+ok: [localhost]
+
+TASK [Setting env] *************************************************************
+task path: /etc/ansible/keystone_config.yml:6
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147017.9-70495898328245 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147017.9-70495898328245 `"'
+127.0.0.1 PUT /tmp/tmplDVQvV TO /root/.ansible/tmp/ansible-tmp-1458147017.9-70495898328245/command
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147017.9-70495898328245/command; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147017.9-70495898328245/" > /dev/null 2>&1'
+changed: [localhost] => {"changed": true, "cmd": "sh /root/CREDS.sh", "delta": "0:00:00.003776", "end": "2016-03-16 22:20:17.959132", "invocation": {"module_args": {"_raw_params": "sh /root/CREDS.sh", "_uses_shell": true, "chdir": null, "creates": null, "executable": null, "removes": null, "warn": true}, "module_name": "command"}, "rc": 0, "start": "2016-03-16 22:20:17.955356", "stderr": "", "stdout": "", "stdout_lines": [], "warnings": []}
+
+TASK [Create the admin tenant] *************************************************
+task path: /etc/ansible/keystone_config.yml:9
+ESTABLISH LOCAL CONNECTION FOR USER: root
+127.0.0.1 EXEC /bin/sh -c 'mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1458147018.02-51328637064251 `" && echo "` echo $HOME/.ansible/tmp/ansible-tmp-1458147018.02-51328637064251 `"'
+127.0.0.1 PUT /tmp/tmpX0Wc08 TO /root/.ansible/tmp/ansible-tmp-1458147018.02-51328637064251/keystone_user
+127.0.0.1 EXEC /bin/sh -c 'LANG=en_IN LC_ALL=en_IN LC_MESSAGES=en_IN /usr/bin/python /root/.ansible/tmp/ansible-tmp-1458147018.02-51328637064251/keystone_user; rm -rf "/root/.ansible/tmp/ansible-tmp-1458147018.02-51328637064251/" > /dev/null 2>&1'
+An exception occurred during task execution. The full traceback is:
+Traceback (most recent call last):
+  File "/root/.ansible/tmp/ansible-tmp-1458147018.02-51328637064251/keystone_user", line 2494, in <module>
+    main()
+  File "/root/.ansible/tmp/ansible-tmp-1458147018.02-51328637064251/keystone_user", line 364, in main
+    keystone = authenticate(endpoint, token, login_user, login_password, login_tenant_name)
+  File "/root/.ansible/tmp/ansible-tmp-1458147018.02-51328637064251/keystone_user", line 123, in authenticate
+    password=login_password, tenant_name=login_tenant_name)
+  File "/usr/lib/python2.7/dist-packages/keystoneclient/v2_0/client.py", line 147, in __init__
+    self.authenticate()
+  File "/usr/lib/python2.7/dist-packages/keystoneclient/utils.py", line 318, in inner
+    return func(*args, **kwargs)
+  File "/usr/lib/python2.7/dist-packages/keystoneclient/httpclient.py", line 407, in authenticate
+    resp = self.get_raw_token_from_identity_service(**kwargs)
+  File "/usr/lib/python2.7/dist-packages/keystoneclient/v2_0/client.py", line 179, in get_raw_token_from_identity_service
+    raise exceptions.AuthorizationFailure(msg)
+keystoneclient.openstack.common.apiclient.exceptions.AuthorizationFailure: A username and password or token is required.
+fatal: [localhost]: FAILED! => {"changed": false, "failed": true, "invocation": {"module_name": "keystone_user"}, "parsed": false}
+
+NO MORE HOSTS LEFT *************************************************************
+	to retry, use: --limit @playbook.retry
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=23   changed=7    unreachable=0    failed=1   
+

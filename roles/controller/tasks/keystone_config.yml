@@ -1,0 +1,25 @@
+---
+ - name: Sync Keystone DB
+   command: keystone-manage db_sync
+
+ - name: Create the admin tenant
+   keystone_user: tenant=admin tenant_description="Admin Tenant" token=c74441d71bd640660939 state=present 
+
+
+ - name: Create the service tenant
+   keystone_user: tenant=service tenant_description="Service Tenant" token=c74441d71bd640660939 state=present
+
+ - name: Create the admin user
+   keystone_user: tenant=admin user=admin password=ADMIN token=c74441d71bd640660939 state=present
+
+ - name: Create the admin role
+   keystone_user: role=admin token=c74441d71bd640660939
+
+ - name: Add the admin role to the admin tenant and user
+   keystone_user: role=admin tenant=admin user=admin token=c74441d71bd640660939  state=present
+
+##############
+
+ - name: Create Keystone Service and Endpoint
+   keystone_service: name=keystone type=identity description="Keystone Identity Service" token=c74441d71bd640660939 state=present public_url="http://{{ ansible_eth0['ipv4']['address'] }}:5000/v2.0" adminurl=http://{{ ansible_eth0['ipv4']['address'] }}:35357/v2.0
+

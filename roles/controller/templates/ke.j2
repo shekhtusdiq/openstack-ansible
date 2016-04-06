@@ -1,0 +1,36 @@
+[DEFAULT]
+debug=True
+verbose=True
+admin_token=c74441d71bd640660939
+log_dir=/var/log/keystone
+[assignment]
+[auth]
+[cache]
+[catalog]
+[credential]
+[database]
+connection = mysql://keystone:keystone_dbpass@{{ ansible_eth0['ipv4']['address'] }}/keystone
+[ec2]
+[endpoint_filter]
+[endpoint_policy]
+[federation]
+[identity]
+[identity_mapping]
+[kvs]
+[ldap]
+[matchmaker_redis]
+[matchmaker_ring]
+[memcache]
+[oauth1]
+[os_inherit]
+[paste_deploy]
+[policy]
+[revoke]
+[saml]
+[signing]
+[ssl]
+[stats]
+[token]
+[trust]
+[extra_headers]
+Distribution = Ubuntu

@@ -1,0 +1,17 @@
+---
+#  - include: admin.yml
+  - include: upgrade.yml
+  - include: mysql.yml
+  - include: keystone_packages.yml
+  - include: createdb.yml
+  - include: mysql_grant.yml
+  - include: keystone_config.yml
+  - include: glance_packeges.yml
+  - include: glance_config.yml
+  - include: nova_packages.yml
+  - include: nova_config.yml
+  - include: cinder_packages.yml
+  - include: cinder_config.yml
+  - include: dashboard.yml
+  - include: neutron_pakage.yml
+  - include: neutron_config.yml

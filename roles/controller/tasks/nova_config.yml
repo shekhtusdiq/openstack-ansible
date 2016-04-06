@@ -1,0 +1,31 @@
+---
+   - name: Create the user nova 
+     keystone_user: tenant=admin user=nova password=nova_pass token=c74441d71bd640660939 state=present
+
+   - name: Add nova user to admin role
+     keystone_user: user=nova tenant=service role=admin token=c74441d71bd640660939  state=present
+
+   - name: Create Endpoint
+     keystone_service: name=nova type=compute description="OpenStack Compute" publicurl=http://{{ ansible_eth0['ipv4']['address'] }}:8774/v2/%(tenant_id)s token=c74441d71bd640660939
+
+   - name: Sync DB
+     command: nova-manage db sync
+
+   - name: Copy Nova.conf
+     template: src=/root/ansible/roles/controller/templates/no.j2 dest=/etc/nova/nova.conf owner=nova group=nova mode="u=rw,g=r,o=r"
+   
+   - name: Copy nova-compute.conf
+     template: src=/root/ansible/roles/controller/templates/nc.j2 dest=/etc/nova/nova-compute.conf owner=nova group=nova mode="u=rw,g=r,o=r"
+
+   
+     notify:
+     - Nova restart all
+
+
+
+# name=glance type=image description="Glance Image Service" public_url=http://{{ ansible_eth0['ipv4']['address'] }}:9292/v2.0 token=c74441d71bd640660939
+
+# name=glance type=image description="Glance Image Service" public_url=http://{{ ansible_eth0['ipv4']['address'] }}:9292/v2.0 token=c74441d71bd640660939
+
+
+#keystone_service: token=c74441d71bd640660939 name=nova type=compute desecription="OpenStack Compute" public_url="http://{{ ansible_eth0['ipv4']['address'] }}:8774/v2252945cfa3fc90e8d13e52ff

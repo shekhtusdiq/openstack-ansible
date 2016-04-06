@@ -1,0 +1,60 @@
+---
+- name: Stop Keystone
+  service: name=keystone state=stopped
+
+- name: Start Keystone
+  service: name=keystone state=started
+
+- name: Restart Keystone
+  service: name=keystone state=restarted
+- name: Synch Keystone DB
+  command: keystone-manage db_sync
+
+# MySQL
+
+- name: Start MYSQL
+  service: name=mysql state=started
+
+- name: Stop MYSQL
+  service: name=mysql state=stopped
+
+- name: Restart MYSQL
+  service: name=mysql state=restarted
+
+- name: Synch Keystone DB
+  command: keystone-manage db_sync
+
+# Glance
+- name: Glance restart all
+  service: name={{ item }} state=restarted
+  with_items:
+  - glance-api
+  - glance-registry
+
+- name: Synch Glance
+  command: glance-manage db_sync
+
+# Nova
+
+- name: Nova restart all
+  service: name={{ item }} state=restarted
+  with_items:
+  - nova-api
+  - nova-cert
+  - nova-consoleauth
+  - nova-scheduler
+  - nova-conductor
+  - nova-novncproxy
+  - nova-compute
+  - nova-console 
+  
+# Neutron
+
+- name: Neutron restart all
+  service: name={{ item }} state=restarted
+  with_items:
+  - neutron-server
+  - neutron-plugin-openvswitch-agent
+  - neutron-metadata-agent
+  - neutron-dhcp-agent
+  - neutron-l3-agent

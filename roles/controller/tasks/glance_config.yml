@@ -1,0 +1,32 @@
+---
+   - name: Create the user glance
+     keystone_user: tenant=service user=glance password=glance_pass token=c74441d71bd640660939 state=present
+
+   - name: Add glance user to admin role
+     keystone_user: user=glance tenant=service role=admin token=c74441d71bd640660939
+
+   - name: Create glance service and Endpoint
+     keystone_service: name=glance type=image description="Glance Image Service" public_url=http://{{ ansible_eth0['ipv4']['address'] }}:9292/v2.0 token=c74441d71bd640660939
+
+   - name: Ensure glance restarted all
+     service: name={{ item }} state=restarted
+     with_items:
+     - glance-api
+     - glance-registry
+
+   - name: Glance DB Synch
+     command: glance-manage db_sync
+
+   - name: Check if download success or not
+     command: glance image-list
+
+   - name: Download a pre-bundled image for testing
+     command: glance image-create --name Ubuntu --is-public true --container-format bare --disk-format iso --location http://archive.ubuntu.com/ubuntu/dists/trusty/main/installer-amd64/current/images/netboot/mini.iso 
+     register: result
+     failed_when: >
+      result.rc !=0 and ("already exist" not in result.stderr)
+   
+   - name: Check if download success or not
+     command: glance image-list
+     
+

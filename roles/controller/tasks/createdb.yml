@@ -1,0 +1,16 @@
+---
+  - name: Create DB Keystone
+    mysql_db: name=keystone state=present
+
+  - name: Create DB Glance
+    mysql_db: name=glance state=present
+
+  - name: Create DB Nova
+    mysql_db: name=nova state=present
+
+  - name: Create DB Neutron
+    mysql_db: name=neutron state=present
+
+  - name: Create DB Cinder
+    mysql_db: name=cinder state=present
+

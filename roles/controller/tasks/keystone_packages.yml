@@ -1,0 +1,12 @@
+---
+  - name: Install Packages
+    apt: name={{ item }} state=installed force=yes
+    with_items:
+    - keystone
+    - python-keystoneclient
+
+  - name: Copy keystone.conf
+    template: src=/root/ansible/roles/controller/templates/ke.j2 dest=/etc/keystone/keystone.conf owner=root group=root mode="u=rw,g=r,o=r"
+
+  - name: Ensure keystone has restarted
+    service: name=keystone state=restarted

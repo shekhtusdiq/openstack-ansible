@@ -1,0 +1,25 @@
+---
+   - name: Create the user cinder
+     keystone_user: tenant=admin user=cinder password=cinder_pass token=c74441d71bd640660939 state=present
+
+   - name: Add cinder user to admin role
+     keystone_user: user=cinder tenant=service role=admin token=c74441d71bd640660939  state=present
+
+   - name: Create Cinder service and Endpoint
+     keystone_service: name=cinder type=volume description="OpenStack Block Storage" token=c74441d71bd640660939 public_url=http://{{ ansible_eth0['ipv4']['address'] }}:8776/v2/%(tenant_id)s
+
+   - name: Create Cinderv2 service and Endpoint
+     keystone_service: name=glancev2 type=volume2 description="OpenStack Block Storage v2" token=c74441d71bd640660939 public_url=http://{{ ansible_eth0['ipv4']['address'] }}:8776/v2/%(tenant_id)s
+
+   - name: Copy cinder.conf
+     template: src=/root/ansible/roles/controller/templates/cind.j2 dest=/etc/cinder/cinder.conf owner=cinder group=cinder mode="u=rw,g=r,o=r"
+
+   - name: Sync DB
+     command: cinder-manage db sync
+
+
+#   http://{{ ansible_eth0['ipv4']['address'] }}:8776/v2/%(tenant_id)s
+#   - name: Nova DB Sync
+#     command: nova-manage db sync
+
+

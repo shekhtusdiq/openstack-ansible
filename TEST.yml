@@ -1,0 +1,26 @@
+---
+- hosts: 127.0.0.1
+  remote_user: root
+  tasks:
+
+   - name: Create the admin tenant
+     keystone_user: tenant=admin tenant_description="Admin Tenant" token=c74441d71bd640660939 state=present
+
+   - name: Create the admin user
+     keystone_user: tenant=admin user=admin password=ADMIN token=c74441d71bd640660939 state=present
+
+   - name: Create the admin role
+     keystone_user: role=admin endpoint= token=c74441d71bd640660939 endpoint=http://localhost:35357/v2.0 state=present
+
+   - name: Add the admin role to the admin tenant and user
+     keystone_user: role=admin tenant=admin user=admin token=c74441d71bd640660939 endpoint=http://localhost:35357/v2.0 state=present 
+
+   - name: Create the demo tenant
+     keystone_user: tenant=demo tenant_description="Demo Tenant" token=c74441d71bd640660939 state=present
+  
+   - name: Create the service tenant
+     keystone_user: tenant=service tenant_description="Service Tenant" token=c74441d71bd640660939 state=present
+
+   - name: Synch Keystone DB
+     command: keystone-manage db_sync
+     notify: Stop MySQL

@@ -1,0 +1,15 @@
+---
+  - name: Install Packages
+    apt: name={{ item }} state=present force=yes
+    with_items:
+    - python-mysqldb
+    - mariadb-server
+    - rabbitmq-server
+
+  - name: Copy my.cnf
+    template: src=/root/ansible/roles/controller/templates/my.cnf.j2 dest=/etc/mysql/my.cnf owner=root group=root mode="u=rw,g=r,o=r" backup=yes
+
+    notify: 
+    - Restart MYSQL
+
+

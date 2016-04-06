@@ -1,0 +1,32 @@
+---
+ - name: Create User
+   keystone_user: tenant=admin user=neutron password=neutron_pass token=c74441d71bd640660939 state=present
+
+ - name: Add Neutron user to admin role
+   keystone_user: user=neutron tenant=service role=admin token=c74441d71bd640660939  state=present
+
+ - name: Create Neutron Service
+   keystone_service: name=neutron type=network description="OpenStack Networking" public_url=http://{{ ansible_eth0['ipv4']['address'] }}:9696 token=c74441d71bd640660939
+
+ - name: Copy neutron.conf
+   template: src=/root/ansible/roles/controller/templates/ne.j2 dest=/etc/neutron/neutron.conf owner=root group=neutron mode="u=rw,g=r,o=r" backup=yes     
+
+ - name: Copy ml2_conf.ini
+   template: src=/root/ansible/roles/controller/templates/ml.j2 dest=/etc/neutron/plugins/ml2/ml2_conf.ini owner=root group=neutron mode="u=rw,g=r,o=r" backup=yes
+
+ - name: Copy metadata_agent.ini
+   template: src=/root/ansible/roles/controller/templates/meta.j2 dest=/etc/neutron/metadata_agent.ini owner=root group=neutron mode="u=rw,g=r,o=r" backup=yes
+
+ - name: Copy dhcp_agent.ini
+   template: src=/root/ansible/roles/controller/templates/dhcp.j2 dest=/etc/neutron/dhcp_agent.ini owner=root group=neutron mode="u=rw,g=r,o=r" backup=yes 
+
+
+ - name: Copy l3_agent.ini
+   template: src=/root/ansible/roles/controller/templates/l3.j2 dest=/etc/neutron/l3_agent.ini owner=root group=neutron mode="u=rw,g=r,o=r" backup=yes
+
+ - name: Sync the Neutron db
+   command: neutron-db-manage --config-file /etc/neutron/neutron.conf --config-file /etc/neutron/plugins/ml2/ml2_conf.ini upgrade juno
+
+   notify:
+   - Neutron restart all    
+

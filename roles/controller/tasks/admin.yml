@@ -1,0 +1,9 @@
+---
+ - name: copy admin.sh
+   template: src=/root/ansible/roles/controller/templates/ad.j2 dest=/root/admin.sh owner=root group=root mode="u=rwx,g=r,o=r" backup=yes
+
+ - name: copy demo.sh 
+   template: src=/root/ansible/roles/controller/templates/de.j2 dest=/root/demo.sh owner=root group=root mode="u=rwx,g=r,o=r" backup=yes
+
+ - name: Source admin.sh
+   command: sh /root/admin.sh
