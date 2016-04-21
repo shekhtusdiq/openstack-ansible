@@ -1,0 +1,9 @@
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export OS_SERVICE_TOKEN=c74441d71bd640660939
+export OS_SERVICE_ENDPOINT=http://{{ ansible_eth0['ipv4']['address'] }}:35357/v2.0
+
+
+export OS_USERNAME=admin
+export OS_PASSWORD=ADMIN
+export OS_TENANT_NAME=admin
+export OS_AUTH_URL=http://{{ ansible_eth0['ipv4']['address'] }}:35357/v2.0
