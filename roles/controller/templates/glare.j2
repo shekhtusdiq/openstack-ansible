@@ -32,6 +32,7 @@ qpid_tcp_nodelay = True
 [database]
 connection = mysql://glance:glance_dbpass@{{ ansible_eth0['ipv4']['address'] }}/glance
 [keystone_authtoken]
+#auth_uri = http://{{ ansible_eth0['ipv4']['address'] }}:5000/v2.0
 identity_uri = http://{{ ansible_eth0['ipv4']['address'] }}:35357
 admin_tenant_name = service
 admin_user = glance

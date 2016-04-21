@@ -1,5 +1,5 @@
 ---
-#  - include: admin.yml
+  - include: admin.yml
   - include: upgrade.yml
   - include: mysql.yml
   - include: keystone_packages.yml

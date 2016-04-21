@@ -13,8 +13,7 @@
     - python-novaclient
     
   - name: Copy Nova.conf
-    template: src=/root/ansible/roles/controller/templates/no.j2 dest=/etc/nova/nova.conf owner=nova group=nova mode="u=rw,g=r,o=r"    
-
+    template: src=no.j2 dest=/etc/nova/nova.conf owner=nova group=nova mode="u=rw,g=r,o=r"    
 
 #  - name: Nova DB Sync
 #    command: nova-manage db sync

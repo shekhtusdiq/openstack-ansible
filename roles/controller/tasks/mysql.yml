@@ -7,9 +7,9 @@
     - rabbitmq-server
 
   - name: Copy my.cnf
-    template: src=/root/ansible/roles/controller/templates/my.cnf.j2 dest=/etc/mysql/my.cnf owner=root group=root mode="u=rw,g=r,o=r" backup=yes
+    template: src=my.cnf.j2 dest=/etc/mysql/my.cnf owner=root group=root mode="u=rw,g=r,o=r" backup=yes
 
-    notify: 
-    - Restart MYSQL
+  - name: Restart MYSQL
+    service: name=mysql state=restarted
 
 

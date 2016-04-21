@@ -1,21 +1,21 @@
 ---
   - name: Assigne priveledge to User Keystone
     command: mysql -e "GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'{{ ansible_eth0['ipv4']['address'] }}' IDENTIFIED BY 'keystone_dbpass';"
-    command: mysql -e "GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'%' IDENTIFIED BY 'keystone_dbpass';" 
+#    command: mysql -e "GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'%' IDENTIFIED BY 'keystone_dbpass';" 
   
   - name: Assigne priveledge to User glance
     command: mysql -e "GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'{{ ansible_eth0['ipv4']['address'] }}' IDENTIFIED BY 'glance_dbpass';"
-    command: mysql -e "GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'%' IDENTIFIED BY 'glance_dbpass';"
+#    command: mysql -e "GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'%' IDENTIFIED BY 'glance_dbpass';"
   
   - name: Assigne priveledge to User Nova
     command: mysql -e "GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'{{ ansible_eth0['ipv4']['address'] }}' IDENTIFIED BY 'nova_dbpass';"
-    command: mysql -e "GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'%' IDENTIFIED BY 'nova_dbpass';"
+#    command: mysql -e "GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'%' IDENTIFIED BY 'nova_dbpass';"
 
   - name: Assigne priveledge to User Neutron
     command: mysql -e "GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'{{ ansible_eth0['ipv4']['address'] }}' IDENTIFIED BY 'neutron_dbpass';"
-    command: mysql -e "GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'%' IDENTIFIED BY 'neutron_dbpass';"
+#    command: mysql -e "GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'%' IDENTIFIED BY 'neutron_dbpass';"
   
   - name: Assigne priveledge to User Cinder
     command: mysql -e "GRANT ALL PRIVILEGES ON cinder.* TO 'cinder'@'{{ ansible_eth0['ipv4']['address'] }}' IDENTIFIED BY 'cinder_dbpass';"
-    command: mysql -e "GRANT ALL PRIVILEGES ON cinder.* TO 'cinder'@'%' IDENTIFIED BY 'cinder_dbpass';"
+#    command: mysql -e "GRANT ALL PRIVILEGES ON cinder.* TO 'cinder'@'%' IDENTIFIED BY 'cinder_dbpass';"
 

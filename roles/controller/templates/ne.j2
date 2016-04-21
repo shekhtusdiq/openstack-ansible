@@ -25,6 +25,8 @@ nova_admin_username=nova
 root_helper = sudo /usr/bin/neutron-rootwrap /etc/neutron/rootwrap.conf
 
 [keystone_authtoken]
+auth_uri = http://{{ ansible_eth0['ipv4']['address'] }}:5000/v2.0
+identity_uri = http://{{ ansible_eth0['ipv4']['address'] }}:35357
 auth_host = {{ ansible_eth0['ipv4']['address'] }}
 auth_port = 35357
 auth_protocol = http

@@ -17,16 +17,11 @@
    - name: Glance DB Synch
      command: glance-manage db_sync
 
-   - name: Check if download success or not
-     command: glance image-list
-
-   - name: Download a pre-bundled image for testing
-     command: glance image-create --name Ubuntu --is-public true --container-format bare --disk-format iso --location http://archive.ubuntu.com/ubuntu/dists/trusty/main/installer-amd64/current/images/netboot/mini.iso 
-     register: result
-     failed_when: >
-      result.rc !=0 and ("already exist" not in result.stderr)
-   
-   - name: Check if download success or not
-     command: glance image-list
+#   - name: Download a pre-bundled image for testing
+#     command: glance image-create --name Ubuntu --is-public true --container-format bare --disk-format iso --location http://archive.ubuntu.com/ubuntu/dists/trusty/main/installer-amd64/current/images/netboot/mini.iso 
      
-
+#   - name: Check if download success or not
+#     command: glance image-list
+     
+#   - name: Upload a template
+#     teamplet

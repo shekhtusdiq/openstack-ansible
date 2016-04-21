@@ -9,7 +9,7 @@
 #   - A hostname/ip can be a member of multiple groups
 
 # Ex 1: Ungrouped hosts, specify before any group headers.
-10.0.0.55
+10.0.0.66
 #10.0.0.44
 #green.example.com
 #blue.example.com
